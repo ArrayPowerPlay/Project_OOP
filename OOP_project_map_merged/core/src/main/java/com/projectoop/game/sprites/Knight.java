@@ -21,8 +21,8 @@ public class Knight extends Sprite {
     public Body b2body;
     private BulletManager bulletManager;
 
-    public static float scaleX = 1.5f;
-    public static float scaleY = 1.5f;
+    public static float scaleX = 1.2f;
+    public static float scaleY = 1.2f;
 
     private Vector2 startPosition;
     private int damage;
@@ -183,7 +183,7 @@ public class Knight extends Sprite {
         fdef.filter.maskBits =
             GameWorld.GROUND_BIT | GameWorld.FIREBALL_BIT |
             GameWorld.TRAP_BIT | GameWorld.CHEST_BIT | GameWorld.CHEST1_BIT |
-            GameWorld.ENEMY_BIT | GameWorld.ITEM_BIT | GameWorld.PORTAL_BIT;
+            GameWorld.ENEMY_BIT | GameWorld.ITEM_BIT | GameWorld.PORTAL_BIT | GameWorld.COIN_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef);
@@ -201,7 +201,7 @@ public class Knight extends Sprite {
         EdgeShape swordRight = new EdgeShape();
         swordRight.set(new Vector2(20/GameWorld.PPM, -6/GameWorld.PPM),
             new Vector2(20/GameWorld.PPM, 10/GameWorld.PPM));
-        fdef.filter.categoryBits = GameWorld.KNIGHT_SWORD_RIGHT;
+        fdef.filter.categoryBits = (short) GameWorld.KNIGHT_SWORD_RIGHT;
         fdef.shape = swordRight;
         fdef.isSensor = true;
         b2body.createFixture(fdef).setUserData(this);
@@ -210,8 +210,18 @@ public class Knight extends Sprite {
         EdgeShape swordLeft = new EdgeShape();
         swordLeft.set(new Vector2(-20/GameWorld.PPM, -6/GameWorld.PPM),
             new Vector2(-20/GameWorld.PPM, 10/GameWorld.PPM));
-        fdef.filter.categoryBits = GameWorld.KNIGHT_SWORD_LEFT;
+        fdef.filter.categoryBits = (short) GameWorld.KNIGHT_SWORD_LEFT;
         fdef.shape = swordLeft;
+        fdef.isSensor = true;
+        b2body.createFixture(fdef).setUserData(this);
+
+        // knight's head sensor
+        EdgeShape head = new EdgeShape();
+        head.set(new Vector2(-2 / GameWorld.PPM, 10 / GameWorld.PPM), new Vector2(2 / GameWorld.PPM, 10 / GameWorld.PPM));
+        fdef.filter.categoryBits = (short) GameWorld.KNIGHT_HEAD_BIT;
+        fdef.filter.maskBits = GameWorld.COIN_BIT;
+        fdef.shape = head;
+        // this line only uses for collision callbacks
         fdef.isSensor = true;
         b2body.createFixture(fdef).setUserData(this);
     }
@@ -285,8 +295,8 @@ public class Knight extends Sprite {
         if (untilCount >= UNTIL_COOL_DOWN) {
             isBig = true;
             b2body.setTransform(b2body.getPosition().x, b2body.getPosition().y + 40 / GameWorld.PPM, 0);
-            Knight.scaleX = Knight.scaleY = 3;
-            Arrow.scaleX = Arrow.scaleY = 3;
+            Knight.scaleX = Knight.scaleY = 2.2f;
+            Arrow.scaleX = Arrow.scaleY = 2.2f;
             redefineKnight();
             GroundEnemy.attackRange = 70;
             untilCount = 0;
@@ -295,7 +305,7 @@ public class Knight extends Sprite {
 
     public void endBigMode(){
         isBig = false;
-        Knight.scaleX = Knight.scaleY = 1.5f;
+        Knight.scaleX = Knight.scaleY = 1.2f;
         Arrow.scaleX = Arrow.scaleY = 1.2f;
         startPosition = b2body.getPosition();
         world.destroyBody(b2body);

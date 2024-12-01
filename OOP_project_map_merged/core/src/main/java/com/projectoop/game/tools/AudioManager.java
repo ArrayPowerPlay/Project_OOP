@@ -24,6 +24,10 @@ public class AudioManager {
     public static String orgDieAudio = "Audio/SoundEffect/org_die.mp3";
     public static String orgHurtAudio = "Audio/SoundEffect/org_hurt.mp3";
     public static String orgAttackAudio = "Audio/SoundEffect/org_attack.mp3";
+    // mario sound
+    public static String hitBlankCoin = "Audio/MarioSound/bump.wav";
+    public static String powerUp = "Audio/MarioSound/powerup_spawn.wav";
+    public static String hitCoin = "Audio/MarioSound/coin.wav";
 
     public static void setUp(){
         manager = new AssetManager();
@@ -42,6 +46,10 @@ public class AudioManager {
         manager.load(orgDieAudio, Sound.class);
         manager.load(orgHurtAudio, Sound.class);
         manager.load(orgAttackAudio, Sound.class);
+        // load mario sound
+        manager.load(hitBlankCoin, Sound.class);
+        manager.load(powerUp, Sound.class);
+        manager.load(hitCoin, Sound.class);
 
         manager.finishLoading();
     }

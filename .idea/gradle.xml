@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/OOP_project_map_merged" />
+        <option name="gradleJvm" value="22" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/OOP_project_map_merged" />
+            <option value="$PROJECT_DIR$/OOP_project_map_merged/core" />
+            <option value="$PROJECT_DIR$/OOP_project_map_merged/lwjgl3" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

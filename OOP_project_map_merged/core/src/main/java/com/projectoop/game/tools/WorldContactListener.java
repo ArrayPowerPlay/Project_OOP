@@ -10,6 +10,7 @@ import com.projectoop.game.sprites.effectedObject.Chest;
 import com.projectoop.game.sprites.effectedObject.Chest1;
 import com.projectoop.game.sprites.enemy.Enemy;
 import com.projectoop.game.sprites.items.Item;
+import com.projectoop.game.sprites.trap.Coin;
 import com.projectoop.game.sprites.trap.InteractiveTileObject;
 import com.projectoop.game.sprites.trap.Portal;
 import com.projectoop.game.sprites.weapons.Arrow;
@@ -54,7 +55,14 @@ public class WorldContactListener implements ContactListener {
 //        }
 
         switch (cDef){
-            //trap collision
+            // trap collision
+            case GameWorld.KNIGHT_HEAD_BIT | GameWorld.COIN_BIT:
+                Gdx.app.log("WorldContactListener", "Knight head hit Coin");
+                if (fixA.getFilterData().categoryBits == GameWorld.KNIGHT_HEAD_BIT)
+                    ((InteractiveTileObject) fixB.getUserData()).onHeadHit((Knight) fixA.getUserData());
+                else
+                    ((InteractiveTileObject) fixA.getUserData()).onHeadHit((Knight) fixB.getUserData());
+                break;
             case GameWorld.KNIGHT_SWORD_RIGHT | GameWorld.PORTAL_BIT:
                 Gdx.app.log("knight", "portal");
                 if (fixA.getFilterData().categoryBits == GameWorld.KNIGHT_SWORD_RIGHT){

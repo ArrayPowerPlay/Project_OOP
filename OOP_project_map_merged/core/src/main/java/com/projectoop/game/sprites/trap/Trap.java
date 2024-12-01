@@ -24,6 +24,11 @@ public class Trap extends InteractiveTileObject {
     }
 
     @Override
+    public void onHeadHit(Knight knight) {
+
+    }
+
+    @Override
     public void passThisRound(Knight knight) {
 
     }

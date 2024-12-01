@@ -18,6 +18,11 @@ public class Pilar extends InteractiveTileObject {
     }
 
     @Override
+    public void onHeadHit(Knight knight) {
+
+    }
+
+    @Override
     public void passThisRound(Knight knight) {
 
     }
