@@ -183,7 +183,7 @@ public class Knight extends Sprite {
         fdef.filter.maskBits =
             GameWorld.GROUND_BIT | GameWorld.FIREBALL_BIT |
             GameWorld.TRAP_BIT | GameWorld.CHEST_BIT | GameWorld.CHEST1_BIT |
-            GameWorld.ENEMY_BIT | GameWorld.ITEM_BIT | GameWorld.PORTAL_BIT | GameWorld.COIN_BIT;
+            GameWorld.ENEMY_BIT | GameWorld.ITEM_BIT | GameWorld.PORTAL_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef);
@@ -215,15 +215,6 @@ public class Knight extends Sprite {
         fdef.isSensor = true;
         b2body.createFixture(fdef).setUserData(this);
 
-        // knight's head sensor
-        EdgeShape head = new EdgeShape();
-        head.set(new Vector2(-2 / GameWorld.PPM, 10 / GameWorld.PPM), new Vector2(2 / GameWorld.PPM, 10 / GameWorld.PPM));
-        fdef.filter.categoryBits = (short) GameWorld.KNIGHT_HEAD_BIT;
-        fdef.filter.maskBits = GameWorld.COIN_BIT;
-        fdef.shape = head;
-        // this line only uses for collision callbacks
-        fdef.isSensor = true;
-        b2body.createFixture(fdef).setUserData(this);
     }
 
     public void redefineKnight(){
@@ -255,7 +246,7 @@ public class Knight extends Sprite {
             new Vector2(20/GameWorld.PPM, -20/GameWorld.PPM));
         fdef.filter.categoryBits = GameWorld.KNIGHT_FOOT_BIT;
         fdef.shape = foot;
-        //fdef.isSensor = true;//foot is a sensor, sensor is an object but is not able to make physical collision
+        fdef.isSensor = true;//foot is a sensor, sensor is an object but is not able to make physical collision
         b2body.createFixture(fdef).setUserData(this);
 
         //sword hit right sensor

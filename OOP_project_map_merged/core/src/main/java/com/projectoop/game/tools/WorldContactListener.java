@@ -4,15 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.*;
 import com.projectoop.game.GameWorld;
 import com.projectoop.game.screens.PlayScreen;
-import com.projectoop.game.screens.ThirdMapScreen;
 import com.projectoop.game.sprites.Knight;
 import com.projectoop.game.sprites.effectedObject.Chest;
 import com.projectoop.game.sprites.effectedObject.Chest1;
 import com.projectoop.game.sprites.enemy.Enemy;
 import com.projectoop.game.sprites.items.Item;
-import com.projectoop.game.sprites.trap.Coin;
 import com.projectoop.game.sprites.trap.InteractiveTileObject;
-import com.projectoop.game.sprites.trap.Portal;
 import com.projectoop.game.sprites.weapons.Arrow;
 import com.projectoop.game.sprites.weapons.BossBall;
 import com.projectoop.game.sprites.weapons.FireBall;
@@ -33,36 +30,8 @@ public class WorldContactListener implements ContactListener {
         //collision definition
         int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;
 
-//        if (fixA.getUserData() == "head" || fixB.getUserData() == "head"){
-//            Fixture head = fixA.getUserData() == "head" ? fixA : fixB;
-//            Fixture object = head == fixA ? fixB : fixA;
-//            //System.out.println("Head hit 1");
-//
-//            if (object.getUserData() != null && InteractiveTileObject.class.isAssignableFrom(object.getUserData().getClass())){
-//                ((InteractiveTileObject) object.getUserData()).onHeadHit();
-//                //System.out.println("Head hit 2");
-//            }
-//        }
-//
-//        if (fixA.getUserData() == "foot" || fixB.getUserData() == "foot"){
-//            Fixture head = fixA.getUserData() == "foot" ? fixA : fixB;
-//            Fixture object = head == fixA ? fixB : fixA;
-//
-//            if (object.getUserData() != null && InteractiveTileObject.class.isAssignableFrom(object.getUserData().getClass())){
-//                ((InteractiveTileObject) object.getUserData()).onFootHit();
-//
-//            }
-//        }
-
         switch (cDef){
             // trap collision
-            case GameWorld.KNIGHT_HEAD_BIT | GameWorld.COIN_BIT:
-                Gdx.app.log("WorldContactListener", "Knight head hit Coin");
-                if (fixA.getFilterData().categoryBits == GameWorld.KNIGHT_HEAD_BIT)
-                    ((InteractiveTileObject) fixB.getUserData()).onHeadHit((Knight) fixA.getUserData());
-                else
-                    ((InteractiveTileObject) fixA.getUserData()).onHeadHit((Knight) fixB.getUserData());
-                break;
             case GameWorld.KNIGHT_SWORD_RIGHT | GameWorld.PORTAL_BIT:
                 Gdx.app.log("knight", "portal");
                 if (fixA.getFilterData().categoryBits == GameWorld.KNIGHT_SWORD_RIGHT){

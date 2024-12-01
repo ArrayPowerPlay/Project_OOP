@@ -19,10 +19,6 @@ public class Portal extends InteractiveTileObject{
     public void onFootHit(Knight knight) {
     }
 
-    @Override
-    public void onHeadHit(Knight knight) {
-
-    }
 
     public void passThisRound(Knight player){
         System.out.println("max_monster: " + screen.creator.getGroundEnemies().size + "  killed: " + screen.kill);

@@ -48,25 +48,13 @@ public abstract class InteractiveTileObject {
 
     //public abstract void onHeadHit();
     public abstract void onFootHit(Knight knight);
-    public abstract void onHeadHit(Knight knight);
     public abstract void passThisRound(Knight knight);
 
-//    public void setCategoryFilter(short filterBit){
-//        Filter filter = new Filter();
-//        filter.categoryBits = filterBit;
-//        fixture.setFilterData(filter);
-//    }
-    public void setCategoryFilter(int filterBit) {
-        // Giới hạn giá trị vào trong phạm vi của short (16 bit)
-        if (filterBit > Short.MAX_VALUE) {
-            filterBit = Short.MAX_VALUE;  // Nếu giá trị quá lớn, cắt bớt xuống Short.MAX_VALUE
-        }
-
+    public void setCategoryFilter(short filterBit){
         Filter filter = new Filter();
-        filter.categoryBits = (short) filterBit;  // Chuyển đổi lại sang short
+        filter.categoryBits = filterBit;
         fixture.setFilterData(filter);
     }
-
 
     public TiledMapTileLayer.Cell getCell(){
         TiledMapTileLayer layer = (TiledMapTileLayer)map.getLayers().get(1);//get cell at Layer 1
