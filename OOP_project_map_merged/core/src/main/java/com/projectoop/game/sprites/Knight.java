@@ -183,7 +183,7 @@ public class Knight extends Sprite {
         fdef.filter.maskBits =
             GameWorld.GROUND_BIT | GameWorld.FIREBALL_BIT |
             GameWorld.TRAP_BIT | GameWorld.CHEST_BIT | GameWorld.CHEST1_BIT |
-            GameWorld.ENEMY_BIT | GameWorld.ITEM_BIT | GameWorld.PORTAL_BIT;
+            GameWorld.ENEMY_BIT | GameWorld.ITEM_BIT | GameWorld.PORTAL_BIT | GameWorld.BOSSBALL_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef);
