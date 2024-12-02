@@ -65,8 +65,6 @@ public class Potion1 extends Item{
         //buff player (code later)
         // buff mana
         screen.getPlayer().buff();
-        // buff health
-        screen.getPlayer().buffHealth(30);
 
     }
 
