@@ -21,8 +21,8 @@ public class Chest1 extends EffectedObject {
 
     private PlayScreen screen;
 
-    private static final float scaleX = 1.5f;
-    private static final float scaleY = 1.5f;
+    private static final float scaleX = 1f;
+    private static final float scaleY = 1f;
 
     private TextureAtlas atlasOpenChest;
     private Animation<TextureRegion> chestOpening;

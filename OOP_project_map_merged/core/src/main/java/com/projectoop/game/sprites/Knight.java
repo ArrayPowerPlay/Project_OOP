@@ -286,8 +286,8 @@ public class Knight extends Sprite {
         if (untilCount >= UNTIL_COOL_DOWN) {
             isBig = true;
             b2body.setTransform(b2body.getPosition().x, b2body.getPosition().y + 40 / GameWorld.PPM, 0);
-            Knight.scaleX = Knight.scaleY = 2.2f;
-            Arrow.scaleX = Arrow.scaleY = 2.2f;
+            Knight.scaleX = Knight.scaleY = 2.7f;
+            Arrow.scaleX = Arrow.scaleY = 2.7f;
             redefineKnight();
             GroundEnemy.attackRange = 70;
             untilCount = 0;

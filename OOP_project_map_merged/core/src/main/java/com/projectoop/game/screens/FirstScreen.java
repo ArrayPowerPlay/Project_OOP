@@ -17,6 +17,7 @@ import com.projectoop.game.sprites.Knight;
 import com.projectoop.game.sprites.items.Item;
 import com.projectoop.game.sprites.items.ItemDef;
 import com.projectoop.game.sprites.items.Potion;
+import com.projectoop.game.sprites.items.Potion1;
 import com.projectoop.game.tools.AudioManager;
 import com.projectoop.game.tools.B2WorldCreator;
 import com.projectoop.game.tools.WorldContactListener;
@@ -64,6 +65,9 @@ public class FirstScreen extends PlayScreen {
             if(idef.type == Potion.class){
                 items.add(new Potion(this, idef.position.x, idef.position.y));
             }
+            else if(idef.type == Potion1.class){
+                items.add(new Potion1(this, idef.position.x, idef.position.y));
+            }
         }
     }
 
@@ -88,6 +92,13 @@ public class FirstScreen extends PlayScreen {
         }
 
         for (EffectedObject eobj : creator.getChests()){
+            eobj.update(dt);
+            if (eobj.getX() < player.getX() + (GameWorld.V_WIDTH/2 + 4 * 16)/GameWorld.PPM){
+                eobj.b2body.setActive(true);
+            }
+        }
+
+        for (EffectedObject eobj : creator.getChest1s()){
             eobj.update(dt);
             if (eobj.getX() < player.getX() + (GameWorld.V_WIDTH/2 + 4 * 16)/GameWorld.PPM){
                 eobj.b2body.setActive(true);
@@ -137,6 +148,9 @@ public class FirstScreen extends PlayScreen {
         }
 
         for (EffectedObject eobj : creator.getChests()){
+            eobj.draw(game.batch);
+        }
+        for (EffectedObject eobj : creator.getChest1s()){
             eobj.draw(game.batch);
         }
         for (Item item : items){
