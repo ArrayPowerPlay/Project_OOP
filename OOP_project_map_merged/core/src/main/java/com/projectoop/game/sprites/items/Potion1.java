@@ -63,6 +63,9 @@ public class Potion1 extends Item{
         destroy();
         potionCollectSound.play();
         //buff player (code later)
+        // buff mana
+        screen.getPlayer().buff();
+        // buff health
         screen.getPlayer().buffHealth(30);
 
     }
