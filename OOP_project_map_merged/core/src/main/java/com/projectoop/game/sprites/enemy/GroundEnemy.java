@@ -92,7 +92,8 @@ public abstract class GroundEnemy extends Enemy{
         //Collision bit list
         fdef.filter.maskBits = GameWorld.GROUND_BIT |
             GameWorld.TRAP_BIT | GameWorld.PILAR_BIT | GameWorld.ARROW_BIT |
-            GameWorld.KNIGHT_SWORD_LEFT | GameWorld.KNIGHT_SWORD_RIGHT;
+            GameWorld.KNIGHT_SWORD_LEFT | GameWorld.KNIGHT_SWORD_RIGHT |
+            GameWorld.CHEST1_BIT | GameWorld.CHEST_BIT;
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);
     }

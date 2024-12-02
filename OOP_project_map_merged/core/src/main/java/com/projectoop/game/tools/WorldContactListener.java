@@ -1,5 +1,6 @@
 package com.projectoop.game.tools;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.*;
 import com.projectoop.game.GameWorld;
@@ -50,6 +51,8 @@ public class WorldContactListener implements ContactListener {
                 }
                 break;
             //enemy collision
+            case GameWorld.ENEMY_BIT | GameWorld.CHEST1_BIT:
+            case GameWorld.ENEMY_BIT | GameWorld.CHEST_BIT:
             case GameWorld.ENEMY_BIT | GameWorld.PILAR_BIT://enemy collide with object -> reverse
                 //Gdx.app.log("Enemy", "Pilar");
                 Enemy enemy = (Enemy) ((fixA.getFilterData().categoryBits == GameWorld.ENEMY_BIT) ? fixA.getUserData() : fixB.getUserData());
