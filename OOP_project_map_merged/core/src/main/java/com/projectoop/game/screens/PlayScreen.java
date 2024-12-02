@@ -39,7 +39,7 @@ public abstract class PlayScreen implements Screen {
     protected OrthogonalTiledMapRenderer renderer;
 
     protected World world;
-    protected Box2DDebugRenderer b2dr;
+//    protected Box2DDebugRenderer b2dr;
     public B2WorldCreator creator;
     // test
     protected Knight player;
@@ -135,7 +135,7 @@ public abstract class PlayScreen implements Screen {
         map.dispose();
         renderer.dispose();
         world.dispose();
-        b2dr.dispose();
+//        b2dr.dispose();
         //hud.dispose();
     }
 
