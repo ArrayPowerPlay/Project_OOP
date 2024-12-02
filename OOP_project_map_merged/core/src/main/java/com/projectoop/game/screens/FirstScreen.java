@@ -169,7 +169,7 @@ public class FirstScreen extends PlayScreen {
             dispose();
         }
         if (passThisRound){
-            game.setScreen(new FourthMapScreen(game));
+            game.setScreen(new SecondMapScreen(game));
             dispose();
         }
     }
